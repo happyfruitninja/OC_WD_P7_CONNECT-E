@@ -1,5 +1,5 @@
-const content = require("../models/content");
-const Content = require("../models/content");
+//const content = require("../models/content");
+//const Content = require("../models/content");
 const fs = require("fs"); //file system
 
 //getting all content

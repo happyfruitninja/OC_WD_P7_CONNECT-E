@@ -1,3 +1,3 @@
 <template>
-    <Hi>Signup</Hi>
+    <Hi>Postpage</Hi>
   </template>

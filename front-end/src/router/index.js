@@ -1,48 +1,47 @@
 import { createWebHistory, createRouter } from "vue-router";
-import Signup from "@/pages/Signup.vue";
-import Login from "@/pages/Login.vue";
-import Postpage from "@/pages/Postpage.vue";
-import Profile from "@/pages/Profile.vue";
-import Notfound from "@/pages/Notfound.vue";
-import View1 from "@/pages/View1.vue";
-import Viewall from "@/Pages/Viewall.vue";
-
+import SignupPage from "@/pages/SignupPage.vue";
+import LoginPage from "@/pages/LoginPage.vue";
+import PostPage from "@/pages/PostPage.vue";
+import ProfilePage from "@/pages/ProfilePage.vue";
+import NotFound from "@/pages/NotFound.vue";
+import ViewSingle from "@/pages/ViewSingle.vue";
+import ViewAll from "@/Pages/ViewAll.vue";
 
 const routes = [
   {
-    path: "/Signup",
-    name: "Signup",
-    component: Signup,
+    path: "/",
+    name: "SignupPage",
+    component: SignupPage,
   },
   {
-    path: "/Login",
-    name: "Login",
-    component: Login,
+    path: "/",
+    name: "LoginPage",
+    component: LoginPage,
   },
   {
-    path: "/Postpage",
-    name: "Postpage",
-    component: Postpage,
+    path: "/",
+    name: "PostPage",
+    component: PostPage,
   },
   {
-    path: "/Profile",
-    name: "Profile",
-    component: Profile,
+    path: "/",
+    name: "ProfilePage",
+    component: ProfilePage,
   },
   {
-    path: "/Notfound",
-    name: "Notfound",
-    component: Notfound,
+    path: "/",
+    name: "NotFound",
+    component: NotFound,
   },
   {
-    path: "/View1",
-    name: "View1",
-    component: View1,
+    path: "/",
+    name: "ViewSingle",
+    component: ViewSingle,
   },
   {
-    path: "/Viewall",
-    name: "Viewall",
-    component: Viewall,
+    path: "/",
+    name: "ViewAll",
+    component: ViewAll,
   },
   {
     path: "/:catchAll(.*)",

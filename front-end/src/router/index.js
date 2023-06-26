@@ -5,7 +5,7 @@ import PostPage from "@/pages/PostPage.vue";
 import ProfilePage from "@/pages/ProfilePage.vue";
 import NotFound from "@/pages/NotFound.vue";
 import ViewSingle from "@/pages/ViewSingle.vue";
-import ViewAll from "@/Pages/ViewAll.vue";
+import ViewAll from "@/pages/ViewAll.vue";
 
 const routes = [
   {

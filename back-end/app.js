@@ -6,18 +6,6 @@ const contentRoutes = require("./routes/content");
 const app = express("");
 app.use(express.json());
 
-// mongoose
-//   .connect(
-//     `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.v9wwnqa.mongodb.net/hot_takes`
-//   )
-//   .then(() => {
-//     console.log("Successfully connected to MongoDB Atlas.");
-//   })
-//   .catch((error) => {
-//     console.log("Unable to connect to MongoDB Atlas.");
-//     console.error(error);
-//   });
-
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader(

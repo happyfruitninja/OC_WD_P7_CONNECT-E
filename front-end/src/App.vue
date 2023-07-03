@@ -1,27 +1,23 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-  <h1>Hi</h1>
-  <router-view />
+  <!-- <img alt="Vue logo" src="./assets/logo.png" />
+  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <router-view /> -->
+  <H1>Welcome to Connect-E</H1>
+  <div>Login</div>
+  <div>{{ login }}</div>
 </template>
 
-<router-link :to="{name: 'LoginPage'}">LoginPage</router-link>
-<router-link :to="{ name: 'SignupPage' }">SignupPage</router-link> 
-<router-link :to="{ name: 'PostPage' }">PostPage</router-link> 
-<router-link :to="{ name: 'ProfilePage' }">ProfilePage</router-link> 
-<router-link :to="{ name: 'ViewSingle' }">ViewSingle</router-link> 
-<router-link :to="{ name: 'ViewAll' }">ViewAll</router-link> 
-<router-link :to="{ name: 'NotFound' }">NotFound</router-link> 
+<!-- 
+<router-link :to="{ name: 'NotFound' }">NotFound</router-link> -->
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
+  name: "App",
   components: {
     // HelloWorld
-  }
-}
+  },
+};
 </script>
 
 <style>

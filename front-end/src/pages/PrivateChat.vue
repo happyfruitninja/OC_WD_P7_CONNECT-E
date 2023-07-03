@@ -1,3 +1,3 @@
 <template>
-    <Hi>View one</Hi>
+    <H1>View one</H1>
   </template>

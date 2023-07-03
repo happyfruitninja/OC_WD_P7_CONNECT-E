@@ -8,7 +8,7 @@
   </form>
 </template>
 
-<!-- <script>
+<script>
 export default {
   data() {
     return { signupPage: [] };
@@ -18,7 +18,7 @@ export default {
     .then()
   }
 };
-</script> -->
+</script>
 
 
 

@@ -3,5 +3,5 @@
   <img />
   <p>ID :</p>
   <p>Name : <span>{firstName} + {lastNAme}</span></p>
-  <p>Delete</p>
+  <button>Delete User</button>
 </template>

@@ -1,16 +1,15 @@
 import { createWebHistory, createRouter } from "vue-router";
-import NavPage from "@/pages/HomePage.vue";
+import HomePage from "@/pages/HomePage.vue";
 import SignupPage from "@/pages/SignupPage.vue";
 import LoginPage from "@/pages/LoginPage.vue";
 import ProfilePage from "@/pages/ProfilePage.vue";
 import NotFound from "@/pages/NotFound.vue";
-import PrivateChat from "@/pages/PrivateChat.vue";
 
 const routes = [
   {
-    path: "/homepage",
+    path: "/",
     name: "HomePage",
-    component: NavPage,
+    component: HomePage,
   },
   {
     path: "/SignupPage",
@@ -23,21 +22,16 @@ const routes = [
     component: LoginPage,
   },
   {
-    path: "/",
+    path: "/profile",
     name: "ProfilePage",
     component: ProfilePage,
   },
-  {
-    path: "/",
-    name: "NotFound",
-    component: NotFound,
-  },
-  {
-    path: "/",
-    name: "PrivateChat",
-    component: PrivateChat,
-  },
-  {
+  // {
+  //   path: "/",
+  //   name: "NotFound",
+  //   component: NotFound,
+  // },
+   {
     path: "/:catchAll(.*)",
     component: NotFound,
   },

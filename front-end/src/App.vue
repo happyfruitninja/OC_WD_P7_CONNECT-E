@@ -1,12 +1,12 @@
 <template>
-  <!-- <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
-  <router-view /> -->
-  <H1 v-if="true">Welcome to Connect-E</H1>
+   <H1 v-if="false">Welcome to Connect-E</H1>
   <div>Login</div>
   <div>{{ login }}</div>
+
+  <router-link :to="{ name: 'ProfilePage' }">ProfilePage</router-link>
+  <!-- **nav component here use v-if to show or hide  ie login page**-->
+
   <router-view /> <!-- This stays here -->
-  <!-- v-if to show what I want to show -->
 </template>
 
 <!-- 

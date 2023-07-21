@@ -1,34 +1,53 @@
 <template>
-   <H1 v-if="false">Welcome to Connect-E</H1>
-  <div>Login</div>
-  <div>{{ login }}</div>
+  <div id="app">
+    <nav>
+      <router-link :to="{ name: 'ProfilePage' }">User Profile</router-link>
+    </nav>
+    <div class="image"></div>
 
-  <router-link :to="{ name: 'ProfilePage' }">ProfilePage</router-link>
-  <!-- **nav component here use v-if to show or hide  ie login page**-->
-
-  <router-view /> <!-- This stays here -->
+    <router-view />
+   This stays here
+  </div>
 </template>
 
-<!-- 
-<router-link :to="{ name: 'NotFound' }">NotFound</router-link> -->
-
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
 export default {
   name: "App",
-  components: {
-    // HelloWorld
-  },
 };
 </script>
-
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
+
+nav {
+  margin-top: o;
+  background-color: lightgreen;
+}
+
+image {
+  width: 60%;
+  height: 50px;
+  border: 2px solid red;
+}
+
+form {
+  width: 40%;
+  height: 50px;
+  border: 2px solid blue;
+}
+
+/*
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+@media only screen and (max-width: 450px) {
+  body {
+    width:100%;
+  }
+
+}
+
+*/
 </style>

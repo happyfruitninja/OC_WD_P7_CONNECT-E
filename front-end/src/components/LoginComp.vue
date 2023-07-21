@@ -1,20 +1,51 @@
 <template>
-    <form>
+  <h1>connect-e</h1>
+  <div id="loginform">
+    <form @submit.prevent="login">
       <label for="id">ID : </label>
-      <input type="text" id="id" name="id" required>
+      <input v-model="userName" type="text" name="userName" required />
       <label for="password">Password : </label>
-      <input type="text" id="id" name="password" required>
+      <input v-model="password" type="text" name="password" required />
+      <button type="submit" value="Sign In"></button>
     </form>
-    <router-link :to="{ name: 'SignupPage' }">want to join?</router-link>
+    <router-link :to="{ name: 'SignupComp' }">want to join?</router-link>
     <p>Forgotten your password?</p>
-  </template>
-  
-  <script>
-  export default {
-    name: "LoginPage",
-    components: {
-      //HelloWorld
+  </div>
+</template>
+<script>
+export default {
+  name: "LoginComp",
+  data() {
+    const userName = "userName";
+    const password = "password";
+    return { userName, password };
+  },
+  methods: {
+    login() {
+      const userInfo = { userName: this.userName, password: this.password };
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userInfo),
+      };
+      fetch("http://localhost:3000/api/auth/login", options)
+        .then((data) => {
+          if (!data.ok) {
+            throw Error(data.status);
+          }
+          return data.json();
+        })
+        .then((result) => {
+          console.log(result);
+          //TODO add userInfo to localStorage
+          //TODO programatically(JS) route the user to the home page using vue router
+        });
     },
-  };
-  </script>
-  
+  },
+  components: {},
+};
+</script>
+
+<style></style>

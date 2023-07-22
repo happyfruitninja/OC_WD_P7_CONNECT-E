@@ -1,13 +1,18 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link :to="{ name: 'ProfilePage' }">User Profile</router-link>
-    </nav>
-    <div class="image"></div>
-
-    <router-view />
-   This stays here
+  <nav>
+    <router-link :to="{ name: 'ProfilePage' }">User Profile</router-link>
+  </nav>
+  <div class="container">
+    <div class="_60">
+      <img
+        :src="require('../src/assets/office.png')"
+        alt="people in a meeting"
+      />
+    </div>
+    <div class="_40">login</div>
   </div>
+
+  <router-view />
 </template>
 
 <script>
@@ -21,33 +26,58 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  color: red;
 }
 
 nav {
-  margin-top: o;
+  margin-top: 0;
   background-color: lightgreen;
 }
-
-image {
-  width: 60%;
-  height: 50px;
-  border: 2px solid red;
+body {
+  border: 5px solid violet;
 }
-
-form {
+.container {
+  border: 3px dashed blue;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 500px;
+}
+  ._60 {
+    width: 59%;
+    height: auto;
+    border: 5px solid red;
+  }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+._40 {
   width: 40%;
   height: 50px;
-  border: 2px solid blue;
+  border: 3px dashed yellow;
 }
 
-/*
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 @media only screen and (max-width: 450px) {
   body {
-    width:100%;
+    width: 100%;
+
+    .container {
+      text-align: center;
+
+      width: 100%;
+      height: 100%;
+
+      ._60 {
+        display: none;
+      }
+
+      ._40 {
+        width: 100%;
+      }
+    }
   }
-
 }
-
-*/
 </style>

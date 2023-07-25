@@ -5,7 +5,7 @@
   <div class="container">
     <div class="_60">
       <img
-        :src="require('../src/assets/office.png')"
+        :src="require('../src/assets/office.jpg')"
         alt="people in a meeting"
       />
     </div>
@@ -43,41 +43,37 @@ body {
   width: 100%;
   height: 500px;
 }
-  ._60 {
-    width: 59%;
-    height: auto;
-    border: 5px solid red;
-  }
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
+._60 {
+  width: 59%;
+  height: auto;
+  border: 5px solid red;
+}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: -60px ;
+}
 ._40 {
-  width: 40%;
+  width: 39%;
   height: 50px;
-  border: 3px dashed yellow;
+  border: 3px dashed salmon;
 }
 
 @media only screen and (max-width: 450px) {
-  body {
+ 
+  .container {
+    text-align: center;
+    align-items: left;
     width: 100%;
+    height: 100%;
+  }
+  ._60 {
+    display: none;
+  }
 
-    .container {
-      text-align: center;
-
-      width: 100%;
-      height: 100%;
-
-      ._60 {
-        display: none;
-      }
-
-      ._40 {
-        width: 100%;
-      }
-    }
+  ._40 {
+    width: 100%;
   }
 }
 </style>

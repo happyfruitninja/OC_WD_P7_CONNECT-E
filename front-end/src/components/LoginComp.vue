@@ -39,12 +39,26 @@ export default {
         })
         .then((result) => {
           console.log(result);
-          //TODO add userInfo to localStorage
-          //TODO programatically(JS) route the user to the home page using vue router
+        });
+      //TODO add userInfo to localStorage
+      // const correctInfo = JSON.parse(localStorage.getItem(loginInfo)); // }) else {
+      // TODO programatically(JS) route the user to the home page using vue router
+      fetch()
+        .then((data) => {
+          if (!data.ok) {
+            throw Error(data.status);
+          }
+          return data.json();
+        })
+        .then((result) => {
+          console.log(result.userId);
+          localStorage.clear();
+          location.assign(`./?id=$(result.userId)`);
         });
     },
   },
-  components: {},
+
+  // components: {},
 };
 </script>
 

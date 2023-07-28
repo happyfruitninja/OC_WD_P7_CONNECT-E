@@ -1,24 +1,48 @@
 <template>
-  <h1>connect-e</h1>
-  <div id="loginform">
-    <form @submit.prevent="login">
-      <label for="id">ID : </label>
-      <input v-model="userName" type="text" name="userName" required />
-      <label for="password">Password : </label>
-      <input v-model="password" type="text" name="password" required />
-      <button type="submit" value="Sign In"></button>
-    </form>
-    <router-link :to="{ name: 'SignupComp' }">want to join?</router-link>
-    <p>Forgotten your password?</p>
+  <div class="container">
+    <div class="block-left"></div>
+    <div class="block-right">
+      <h1>connect-e</h1>
+      <div class="form">
+        <form @submit.prevent="login">
+          <div>
+            <input
+              v-model="userName"
+              v-on="focus"
+              id="userName"
+              type="text"
+              placeholder="Username"
+              required
+            />
+          </div>
+          <div>
+            <input
+              v-model="password"
+              v-on="focus"
+              id="password"
+              type="text"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <div class="submit">
+            <input @click="login" type="submit" value="Log In" required />
+          </div>
+        </form>
+        <router-link :to="{ name: 'SignupComp' }" id="join"> Want to join?</router-link>
+        <p>Forgot your password?</p>
+      </div>
+    </div>
   </div>
 </template>
+
 <script>
 export default {
   name: "LoginComp",
   data() {
     const userName = "userName";
     const password = "password";
-    return { userName, password };
+    return { loginPage: [userName, password] };
   },
   methods: {
     login() {
@@ -30,6 +54,7 @@ export default {
         },
         body: JSON.stringify(userInfo),
       };
+      // fetch login info
       fetch("http://localhost:3000/api/auth/login", options)
         .then((data) => {
           if (!data.ok) {
@@ -38,28 +63,28 @@ export default {
           return data.json();
         })
         .then((result) => {
-          console.log(result);
+          console.log(result.userInfo);
         });
       //TODO add userInfo to localStorage
-      // const correctInfo = JSON.parse(localStorage.getItem(loginInfo)); // }) else {
+      localStorage.getItem("userInfo", JSON.stringify(userInfo));
       // TODO programatically(JS) route the user to the home page using vue router
-      fetch()
-        .then((data) => {
-          if (!data.ok) {
-            throw Error(data.status);
-          }
-          return data.json();
-        })
-        .then((result) => {
-          console.log(result.userId);
-          localStorage.clear();
-          location.assign(`./?id=$(result.userId)`);
-        });
+
+      localStorage.clear();
+      location.assign(`./home`);
     },
   },
-
-  // components: {},
 };
 </script>
 
-<style></style>
+<style>
+
+.block-left {
+  background-image: url("../assets/office.jpg");
+
+}
+#join {
+  margin-bottom: 10px;
+  
+}
+
+</style>

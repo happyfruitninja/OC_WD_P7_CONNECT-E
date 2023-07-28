@@ -1,79 +1,93 @@
 <template>
-  <nav>
-    <router-link :to="{ name: 'ProfilePage' }">User Profile</router-link>
-  </nav>
-  <div class="container">
-    <div class="_60">
-      <img
-        :src="require('../src/assets/office.jpg')"
-        alt="people in a meeting"
-      />
-    </div>
-    <div class="_40">login</div>
-  </div>
-
+  <NavHeader />
   <router-view />
 </template>
 
 <script>
+import NavHeader from "@/components/NavHeader.vue";
 export default {
-  name: "App",
+  name: "LoginComp",
+  components: { NavHeader },
 };
 </script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-size: 1em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: red;
 }
 
-nav {
-  margin-top: 0;
-  background-color: lightgreen;
-}
-body {
-  border: 5px solid violet;
-}
 .container {
-  border: 3px dashed blue;
+  margin: 0 auto;
   display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  height: 500px;
-}
-._60 {
-  width: 59%;
-  height: auto;
-  border: 5px solid red;
-}
-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: -60px ;
-}
-._40 {
-  width: 39%;
-  height: 50px;
-  border: 3px dashed salmon;
+  text-align: center;
+  max-width: 1200px;
+  padding: 20px;
+  height: 85vh;
 }
 
-@media only screen and (max-width: 450px) {
- 
+.block-left {
+  width: 60%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  max-height: 700px;
+  background-size: cover;
+  margin-right: 20px;
+}
+.block-right {
+  width: 40%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+form {
+  margin: 15px;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 7px;
+}
+
+input {
+  text-align: center;
+}
+
+.submit {
+  margin-top: 30px;
+}
+
+a {
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 700px) {
+  #app {
+    font-size: 0.9em;
+  }
   .container {
-    text-align: center;
-    align-items: left;
+    margin: 0;
+    padding: 0;
     width: 100%;
     height: 100%;
   }
-  ._60 {
+  .block-left {
     display: none;
   }
 
-  ._40 {
+  .block-right {
     width: 100%;
+    margin: 0 auto;
   }
 }
 </style>
+5;

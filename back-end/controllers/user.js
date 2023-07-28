@@ -6,8 +6,7 @@ const jwt = require("jsonwebtoken");
 exports.signup = (req, res, next) => {
   bcrypt.hash(req.body.password, 10).then((hash) => {
     const user = new User({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
+      userName: req.body.userName,
       email: req.body.email,
       password: hash,
     });
@@ -43,7 +42,7 @@ exports.login = (req, res, next) => {
               error: new Error("Incorrect password!"),
             });
           }
-          const token = jwt.sign({ userId: user.id }, "RANDOM_TOKEN_SECRET", {
+          const token = jwt.sign({ userId: user.id}, "RANDOM_TOKEN_SECRET", {
             expiresIn: "24h",
           });
           res.status(200).json({

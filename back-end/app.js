@@ -23,6 +23,10 @@ app.use((req, res, next) => {
 app.use("/images", express.static(path.join(__dirname, "images")));
 
 //register request
+app.use(express.static("images"));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json()); 
+
 app.use("/api/content", contentRoutes);
 app.use("/api/auth", userRoutes);
 module.exports = app;

@@ -4,9 +4,11 @@
       <div class="profile-pic"></div>
       <div class="profile-info">
         <!-- <h2>Your Profile</h2> -->
-        <p>ID :</p>
+        <p>ID :<span>{userId}</span></p>
         <p>Username : <span>{userName}</span></p>
-        <button>Delete User</button>
+        <p>Email : <span>{email}</span></p>
+        <button>Update accout</button>
+        <button>Delete accout</button>
       </div>
     </div>
   </div>
@@ -37,12 +39,16 @@ align-items: center;
   
 }
 .profile-info{
+  display:flex;
+  flex-direction: column;
   width:300px;
   height: 150px;  
  width:100%;
   margin: 10px  0 0;
+  align-content: center;
   text-align: left;
   margin: 20px;
 }
+
 
 </style>

@@ -71,6 +71,7 @@ export default {
     return { signupPage: [userName, email, password, confPassword] };
   },
   methods: {
+       // TODO call this function when the user clicks the button
     signup() {
       const signupInfo = {
         userName: this.userName,
@@ -86,8 +87,7 @@ export default {
         body: JSON.stringify(signupInfo),
       };
       console.log("sign up user ...");
-      // TODO call this function when the user clicks the button
-
+   
       // TODO user fetch API to send signup request
       fetch("http://localhost:3000/api/auth/signup", options)
         .then((data) => {
@@ -99,9 +99,11 @@ export default {
         .then((result) => {
           console.log(result.signupInfo);
         });
+        localStorage.setItem("signupInfo", JSON.stringify(signupInfo));
       // TODO redirect user to login (need token)
       location.assign(`./login`);
     },
+   
   },
 };
 </script>
@@ -112,7 +114,7 @@ export default {
 }
 
  p {
-  width: 40%;
+  width:80%;
   margin:0;
   font-size: 0.7em;
 }

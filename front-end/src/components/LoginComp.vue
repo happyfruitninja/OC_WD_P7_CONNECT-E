@@ -8,7 +8,6 @@
           <div>
             <input
               v-model="userName"
-              v-on="focus"
               id="userName"
               type="text"
               placeholder="Username"
@@ -18,7 +17,6 @@
           <div>
             <input
               v-model="password"
-              v-on="focus"
               id="password"
               type="text"
               placeholder="Password"
@@ -29,7 +27,9 @@
             <input @click="login" type="submit" value="Log In" required />
           </div>
         </form>
-        <router-link :to="{ name: 'SignupComp' }" id="join"> Want to join?</router-link>
+        <router-link :to="{ name: 'SignupComp' }" id="join">
+          Want to join?</router-link
+        >
         <p>Forgot your password?</p>
       </div>
     </div>
@@ -71,20 +71,19 @@ export default {
 
       localStorage.clear();
       location.assign(`./home`);
+      // authenticate(){
+        
+      // }
     },
   },
 };
 </script>
 
 <style>
-
 .block-left {
   background-image: url("../assets/office.jpg");
-
 }
 #join {
   margin-bottom: 10px;
-  
 }
-
 </style>

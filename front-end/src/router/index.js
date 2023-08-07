@@ -9,6 +9,10 @@ import NotFound from "@/pages/NotFound.vue";
 
 const routes = [
   {
+    path: "/",
+    redirect: "/home",
+  },
+  {
     path: "/home",
     name: "HomeComp",
     component: HomeComp,

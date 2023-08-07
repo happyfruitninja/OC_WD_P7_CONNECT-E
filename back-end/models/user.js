@@ -1,4 +1,5 @@
 "use strict";
+
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
@@ -15,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   User.init(
     {
       userName: DataTypes.STRING,
+      id: DataTypes.STRING,
       email: { type: DataTypes.STRING, unique: true },
       password: DataTypes.STRING,
     },
@@ -29,15 +31,5 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "cascade",
     });
   };
-  return User;
-};
-//FIXME do I need this or the table in pgAdmin already provides it?
-module.exports = function (sequelize, DataTypes) {
-  var User = sequelize.define("User", {
-    username: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
-  });
-
   return User;
 };

@@ -29,7 +29,7 @@
             <label for="password">Password </label>
             <input
               v-model="password"
-              type="text"
+              type="password"
               name="password"
               placeholder="Password"
               required
@@ -46,9 +46,8 @@
             />
           </div>
           <div class="submit">
-            <input @click="signup" type="submit" value="Create Account" />
+            <input type="submit" value="Create Account" />
           </div>
-          
         </form>
         <p>
           By providing my information, I agree to Grouponia's Privacy Policy and
@@ -63,7 +62,7 @@
 export default {
   name: "signupComp",
   data() {
-    //TODO add user name, email and password to the return state below
+    // add user name, email and password to the return state below
     const userName = "userName";
     const email = "email";
     const password = "password";
@@ -71,7 +70,7 @@ export default {
     return { signupPage: [userName, email, password, confPassword] };
   },
   methods: {
-       // TODO call this function when the user clicks the button
+    //  call this function when the user clicks the button
     signup() {
       const signupInfo = {
         userName: this.userName,
@@ -87,8 +86,8 @@ export default {
         body: JSON.stringify(signupInfo),
       };
       console.log("sign up user ...");
-   
-      // TODO user fetch API to send signup request
+
+      //  user fetch API to send signup request
       fetch("http://localhost:3000/api/auth/signup", options)
         .then((data) => {
           if (!data.ok) {
@@ -98,12 +97,12 @@ export default {
         })
         .then((result) => {
           console.log(result.signupInfo);
+          // redirect user to login using Vue(need token) instead of location.assign(`./login`);
+          this.$router.push("./login");
         });
-        localStorage.setItem("signupInfo", JSON.stringify(signupInfo));
-      // TODO redirect user to login (need token)
-      location.assign(`./login`);
+      //TODO add catch
+      //  console.log(error);
     },
-   
   },
 };
 </script>
@@ -113,9 +112,9 @@ export default {
   background-image: url("../assets/office.jpg");
 }
 
- p {
-  width:80%;
-  margin:0;
+p {
+  width: 80%;
+  margin: 0;
   font-size: 0.7em;
 }
 

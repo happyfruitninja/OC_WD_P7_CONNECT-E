@@ -65,38 +65,38 @@ exports.login = (req, res, next) => {
 };
 
 //adding a user profile without a file
-exports.createUser = (req, res, next) => {
-  let imageUrl = null;
-  let requestedUser;
-  if (req.file) {
-    const url = req.protocol + "://" + req.get("host");
-    requestedUser = JSON.parse(req.body.user);
-    imageUrl = url + "/images/" + req.file.filename;
-  } else {
-    requestedUser = req.body;
-  }
-  const user = new User({
-    Username: requestedUser.userName,
-    email: requestedUser.email,
-    imageUrl,
-    userId: requestedSauce.userId,
-  });
-  user
-    .save()
-    .then(() => {
-      res.status(201).json({
-        message: "Sauce saved successfully",
-      });
-    })
-    .catch((error) => {
-      res.status(400).json({
-        error: error,
-      });
-    });
-};
+// exports.createUser = (req, res, next) => {
+//   let imageUrl = null;
+//   let requestedUser;
+//   if (req.file) {
+//     const url = req.protocol + "://" + req.get("host");
+//     requestedUser = JSON.parse(req.body.user);
+//     imageUrl = url + "/images/" + req.file.filename;
+//   } else {
+//     requestedUser = req.body;
+//   }
+//   const user = new User({
+//     Username: requestedUser.userName,
+//     email: requestedUser.email,
+//     imageUrl,
+//     userId: requestedSauce.userId,
+//   });
+//   user
+//     .save()
+//     .then(() => {
+//       res.status(201).json({
+//         message: "Sauce saved successfully",
+//       });
+//     })
+//     .catch((error) => {
+//       res.status(400).json({
+//         error: error,
+//       });
+//     });
+// };
 
 //user account delete function
-exports.deleteAccount = (req, res, next) => {
+exports.deleteUser = (req, res, next) => {
   User.findOne({ userId: req.params.id }).then((user) => {
     const filename = userProfile.imageUrl.split("/images/")[1];
     fs.unlink("images/" + filename, () => {

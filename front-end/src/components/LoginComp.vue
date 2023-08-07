@@ -6,22 +6,10 @@
       <div class="form">
         <form @submit.prevent="login">
           <div>
-            <input
-              v-model="userName"
-              id="userName"
-              type="text"
-              placeholder="Username"
-              required
-            />
+            <input v-model="userName" id="userName" type="text" required />
           </div>
           <div>
-            <input
-              v-model="password"
-              id="password"
-              type="text"
-              placeholder="Password"
-              required
-            />
+            <input v-model="password" id="password" type="password" required />
           </div>
           <div class="submit">
             <input @click="login" type="submit" value="Log In" required />
@@ -63,17 +51,14 @@ export default {
           return data.json();
         })
         .then((result) => {
-          console.log(result.userInfo);
+          console.log("inside then");
+          console.log(result);
+          //add userInfo to localStorage
+          localStorage.setItem("userInfo", JSON.stringify(result));
+          location.assign("./home");
         });
-      //TODO add userInfo to localStorage
-      localStorage.getItem("userInfo", JSON.stringify(userInfo));
-      // TODO programatically(JS) route the user to the home page using vue router
 
-      localStorage.clear();
-      location.assign(`./home`);
-      // authenticate(){
-        
-      // }
+      console.log("outside then");
     },
   },
 };

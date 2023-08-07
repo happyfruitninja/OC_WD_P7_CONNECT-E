@@ -7,7 +7,6 @@
         <p>ID :<span>{userId}</span></p>
         <p>Username : <span>{userName}</span></p>
         <p>Email : <span>{email}</span></p>
-        <button>Update accout</button>
         <button>Delete accout</button>
       </div>
     </div>

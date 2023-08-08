@@ -97,11 +97,11 @@ exports.createUser = (req, res, next) => {
 
 //user account delete function
 exports.deleteUser = (req, res, next) => {
-  User.findOne({ userId: req.params.id }).then((user) => {
-    const filename = userProfile.imageUrl.split("/images/")[1];
+  User.findOne({ id: req.params.id }).then((user) => {
+    const filename = user.imageUrl.split("/images/")[1];
     fs.unlink("images/" + filename, () => {
       User.deleteOne({
-        userId: req.params.id,
+        id: req.params.id,
       })
         .then(() => {
           res.status(200).json();

@@ -11,12 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      User.belongsTo(models.UserModel,{foreignKey:"userID"});
     }
   }
   User.init(
     {
       userName: DataTypes.STRING,
-      id: DataTypes.STRING,
       email: { type: DataTypes.STRING, unique: true },
       password: DataTypes.STRING,
     },

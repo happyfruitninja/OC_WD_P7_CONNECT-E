@@ -96,12 +96,10 @@ export default {
           return data.json();
         })
         .then((result) => {
-          console.log(result.signupInfo);
+          console.log(result);
           // redirect user to login using Vue(need token) instead of location.assign(`./login`);
           this.$router.push("./login");
         });
-      //TODO add catch
-      //  console.log(error);
     },
   },
 };

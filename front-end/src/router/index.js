@@ -3,7 +3,7 @@ import HomeComp from "@/components/HomeComp.vue";
 
 import SignupComp from "@/components/SignupComp.vue";
 import LoginComp from "@/components/LoginComp.vue";
-import ProfilePage from "@/pages/ProfilePage.vue";
+// import ProfilePage from "@/pages/ProfilePage.vue";
 import NotFound from "@/pages/NotFound.vue";
 
 

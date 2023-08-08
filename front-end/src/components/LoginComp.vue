@@ -12,7 +12,7 @@
             <input v-model="password" id="password" type="password" required />
           </div>
           <div class="submit">
-            <input @click="login" type="submit" value="Log In" required />
+            <input type="submit" value="Log In" required />
           </div>
         </form>
         <router-link :to="{ name: 'SignupComp' }" id="join">

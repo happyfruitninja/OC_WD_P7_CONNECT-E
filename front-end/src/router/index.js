@@ -4,7 +4,6 @@ import HomeComp from "@/components/HomeComp.vue";
 import SignupComp from "@/components/SignupComp.vue";
 import LoginComp from "@/components/LoginComp.vue";
 import ProfilePage from "@/pages/ProfilePage.vue";
-import NotFound from "@/pages/NotFound.vue";
 
 
 const routes = [
@@ -37,10 +36,10 @@ const routes = [
   //   name: "NotFound",
   //   component: NotFound,
   // },
-   {
-    path: "/:catchAll(.*)",
-    component: NotFound,
-  },
+  //  {
+  //   path: "/:catchAll(.*)",
+  //   component: NotFound,
+  // },
 ];
 
 const router = createRouter({

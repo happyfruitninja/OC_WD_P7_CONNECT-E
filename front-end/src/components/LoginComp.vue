@@ -51,14 +51,14 @@ export default {
           return data.json();
         })
         .then((result) => {
-          console.log("inside then");
+         // console.log("inside then");
           console.log(result);
           //add userInfo to localStorage
           localStorage.setItem("userInfo", JSON.stringify(result));
           location.assign("./home");
         });
 
-      console.log("outside then");
+      //console.log("outside then");
     },
   },
 };

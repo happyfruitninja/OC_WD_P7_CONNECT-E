@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      User.belongsTo(models.UserModel,{foreignKey:"userID"});
-    }
+      User.belongsTo(models.User,{foreignKey:"userID"});
+        }
   }
   User.init(
     {
@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   User.associate = (models) => {
-    User.hasOne(models.user, {
+    User.hasOne(models.userId, {
       onDelete: "cascade",
     });
   };

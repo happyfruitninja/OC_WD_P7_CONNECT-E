@@ -1,4 +1,4 @@
-const content = require("../models/content");
+const content = require("../models/user");
 const fs = require("fs"); //file system
 
 //getting all content

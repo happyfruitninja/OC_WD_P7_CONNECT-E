@@ -28,7 +28,7 @@ exports.signup = (req, res, next) => {
 
 //implementing login function
 exports.login = (req, res, next) => {
-  User.findOne({ email: req.body.email })
+  User.findOne({ userName: req.body.userName })
     .then((user) => {
       if (!user) {
         return res.status(401).json({

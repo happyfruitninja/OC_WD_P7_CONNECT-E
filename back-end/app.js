@@ -10,7 +10,6 @@ app.use(express.json());
 //connect to database using sequelize -> see models/index.js
 
 //a middleware function that sets necessary headers to enabling CORS in express
-
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
@@ -23,9 +22,6 @@ app.use((req, res, next) => {
   );
   next();
 });
-
-//allow users access to static resources such as images
-//app.use("/images", express.static(path.join(__dirname, "images")));
 
 //register request
 //app.use(express.static("images"));

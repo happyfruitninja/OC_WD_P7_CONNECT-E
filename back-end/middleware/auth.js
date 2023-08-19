@@ -18,3 +18,15 @@ module.exports = (req, res, next) => {
     });
   }
 };
+
+exports.userToken = (req, res, next) => {
+  Post.findOne({
+    password: req.params.password,
+  })
+    .then((post) => {
+      res.status(200).json(post);
+    })
+    .catch((error) => {
+      res.status(404).json({ error: error });
+    });
+};

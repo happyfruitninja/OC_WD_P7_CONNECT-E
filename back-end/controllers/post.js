@@ -46,7 +46,7 @@ exports.getOnePost = (req, res, next) => {
   Post.findOne({
     id: req.params.id,
   })
-    .then((sauce) => {
+    .then((post) => {
       res.status(200).json(post);
     })
     .catch((error) => {

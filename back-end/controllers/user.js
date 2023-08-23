@@ -64,34 +64,6 @@ exports.login = (req, res, next) => {
     });
 };
 
-// //adding a user profile without a file
-// exports.createUser = (req, res, next) => {
-//   let requestedUser;
-//   if (req.file) {
-//     const url = req.protocol + "://" + req.get("host");
-//     requestedUser = JSON.parse(req.body.user);
-//   } else {
-//     requestedUser = req.body;
-//   }
-//   const user = new User({
-//     userName: requestedUser.userName,
-//     email: requestedUser.email,
-//     userId: requestedUser.userId,
-//   });
-//   user
-//     .save()
-//     .then(() => {
-//       res.status(201).json({
-//         message: "User saved successfully",
-//       });
-//     })
-//     .catch((error) => {
-//       res.status(400).json({
-//         error: error,
-//       });
-//     });
-// };
-
 //user account delete function
 exports.deleteUser = (req, res, next) => {
   User.findOne({ id: req.params.id }).then((user) => {
@@ -106,3 +78,4 @@ exports.deleteUser = (req, res, next) => {
       });
   });
 };
+

@@ -8,7 +8,7 @@
         >
       </li>
       <li>
-        <router-link :to="{ name: 'HomeComp' }" class="link">Home</router-link>
+        <router-link :to="{ name: 'PostPage' }" class="link">Home</router-link>
       </li>
       <li @click="signOut" class="link">Sign out</li>
     </ul>

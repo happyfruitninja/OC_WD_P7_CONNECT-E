@@ -4,18 +4,27 @@
       <div class="profile-pic"></div>
       <div class="profile-info">
         <!-- <h2>Your Profile</h2> -->
-        <p>ID :<span>{userId}</span></p>
-        <p>Username : <span>{userName}</span></p>
-        <p>Email : <span>{email}</span></p>
+        <!-- <p v-model="userName" type="text">
+          Name : <span>{{ userName }}</span>
+        </p>
+        <p v-model="userEmail" type="text">
+          Email Address : <span>{{ userEmail }}</span>
+        </p>
         <button>Delete accout</button>
-      </div>
+      </div> -->
     </div>
+  </div>
+  <textarea>this is a text area</textarea>
   </div>
 </template>
 
 <script>
 export default {
-  name: "ProfilePage"
+  name: "ProfilePage",
+  // data() {
+  //   const userName = ref("");
+  //   const userEmail = ref("");
+  // },
 };
 </script>
 
@@ -23,9 +32,9 @@ export default {
 .profile {
   margin: 20px auto;
   flex-direction: row;
-display:flex;
-justify-content: center;
-align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 70%;
 }
 .profile-pic {
@@ -35,19 +44,16 @@ align-items: center;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  
 }
-.profile-info{
-  display:flex;
+.profile-info {
+  display: flex;
   flex-direction: column;
-  width:300px;
-  height: 150px;  
- width:100%;
-  margin: 10px  0 0;
+  width: 300px;
+  height: 150px;
+  width: 100%;
+  margin: 10px 0 0;
   align-content: center;
   text-align: left;
   margin: 20px;
 }
-
-
 </style>

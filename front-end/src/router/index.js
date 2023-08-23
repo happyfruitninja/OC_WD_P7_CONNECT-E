@@ -1,5 +1,4 @@
 import { createWebHistory, createRouter } from "vue-router";
-import HomeComp from "@/components/HomeComp.vue";
 
 import SignupComp from "@/components/SignupComp.vue";
 import LoginComp from "@/components/LoginComp.vue";
@@ -14,8 +13,8 @@ const routes = [
   },
   {
     path: "/home",
-    name: "HomeComp",
-    component: HomeComp,
+    name: "PostPage",
+    component: PostPage,
   },
   {
     path: "/signup",
@@ -32,11 +31,7 @@ const routes = [
     name: "ProfilePage",
     component: ProfilePage,
   },
-  {
-    path: "/post",
-    name: "PostPage",
-    component: PostPage,
-  }
+
   // {
   //   path: "/",
   //   name: "NotFound",

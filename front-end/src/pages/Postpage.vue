@@ -1,4 +1,13 @@
 <template>
+  <div class="container">
+    <div class="display-box">This is the display box</div>
+    <div class="post-box">
+      <textarea>This is post box</textarea>
+      <div class="buttons"></div>
+      <button v-on="click" id="attach">Attach</button>
+      <button v-on="click" id="post">Post</button>
+    </div>
+  </div>
   <H1>Postpage</H1>
 </template>
 
@@ -41,4 +50,29 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+
+.container {
+  width:60%;
+  height: 50%;
+  background-color: pink;
+}
+.display-box {
+  margin: 10px;
+  border: 1px solid lightgrey;
+  width: 60%;
+  height: 800px;
+}
+.post-box {
+  display: flex;
+  flex-direction: row;
+ }
+ .post input {
+  width: 100%;
+ }
+.buttons {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+}
+</style>

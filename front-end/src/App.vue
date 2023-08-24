@@ -8,6 +8,8 @@ import NavHeader from "@/components/NavHeader.vue";
 export default {
   name: "LoginComp",
   components: { NavHeader },
+  
+  // }
 };
 </script>
 <style>

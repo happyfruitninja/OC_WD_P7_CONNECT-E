@@ -28,6 +28,6 @@ app.use((req, res, next) => {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use("/api/post", postRoutes);
+app.use("/api/posts", postRoutes);
 app.use("/api/auth", userRoutes);
 module.exports = app;

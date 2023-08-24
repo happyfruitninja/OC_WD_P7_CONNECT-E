@@ -3,28 +3,40 @@
     <div class="profile">
       <div class="profile-pic"></div>
       <div class="profile-info">
-        <!-- <h2>Your Profile</h2> -->
-        <!-- <p v-model="userName" type="text">
-          Name : <span>{{ userName }}</span>
-        </p>
-        <p v-model="userEmail" type="text">
-          Email Address : <span>{{ userEmail }}</span>
-        </p>
-        <button>Delete accout</button>
-      </div> -->
+        <button @click="deleteUser">Delete account</button>
+      </div>
     </div>
-  </div>
-  <textarea>this is a text area</textarea>
   </div>
 </template>
 
 <script>
 export default {
   name: "ProfilePage",
-  // data() {
-  //   const userName = ref("");
-  //   const userEmail = ref("");
-  // },
+  methods: {
+    deleteUser() {
+      const { token, userId } = JSON.parse(localStorage.getItem("userInfo"));
+      const headers = {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      };
+      const options = {
+        method: "DELETE",
+        headers,
+      };
+      fetch(`http://localhost:3000/api/auth/${userId}`, options)
+        .then((data) => {
+          if (!data.ok) {
+            throw Error(data.status);
+          }
+          return data.json();
+        })
+        .then((result) => {
+          console.log(result);
+          localStorage.removeItem("userInfo");
+          this.$router.push("/signup");
+        });
+    },
+  },
 };
 </script>
 

@@ -66,16 +66,16 @@ exports.login = (req, res, next) => {
 
 //user account delete function
 exports.deleteUser = (req, res, next) => {
-  User.findOne({ id: req.params.id }).then((user) => {
+  User.findOne({ where: { id: req.params.id } }).then((user) => {
     user
       .destroy()
       .then(() => {
-        res.status(200).json();
-        message: "User deleted successfully";
+        res.status(200).json({
+          message: "User deleted successfully",
+        });
       })
       .catch((error) => {
         res.status(400).json({ error: error.message || error });
       });
   });
 };
-

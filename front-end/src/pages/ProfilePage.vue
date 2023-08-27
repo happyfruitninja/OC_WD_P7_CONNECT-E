@@ -42,17 +42,15 @@ export default {
 
 <style>
 .profile {
-  margin: 20px auto;
-  flex-direction: row;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 70%;
+  margin: auto;
+  text-align: center;
+
 }
 .profile-pic {
   background-image: url("../assets/silhouette.png");
   width: 150px;
   height: 150px;
+  margin: 0 auto;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -66,6 +64,6 @@ export default {
   margin: 10px 0 0;
   align-content: center;
   text-align: left;
-  margin: 20px;
+ 
 }
 </style>

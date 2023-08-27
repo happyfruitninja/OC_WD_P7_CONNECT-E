@@ -1,18 +1,20 @@
-const post = require("../models/post");
-const Post = require("../models/post");
+const { Post } = require("../models");
 const fs = require("fs"); //file system
 
 //creating a post
 exports.createPost = (req, res, next) => {
   let requestedPost;
+  let mediaUrl = null;
   if (req.file) {
-    const url = req.protocol + "://" + req.get("host");
+    mediaUrl =
+      req.protocol + "://" + req.get("host") + "/images/" + req.file.filename;
     requestedPost = JSON.parse(req.body.post);
-      } else {
+  } else {
     requestedPost = req.body;
   }
   const post = new Post({
-    post:requestedPost.post,    
+    post: requestedPost.post,
+    mediaUrl,
     userId: requestedPost.userId,
   });
   post
@@ -29,10 +31,9 @@ exports.createPost = (req, res, next) => {
     });
 };
 
-
 //getting all posts
 exports.getAllPosts = (req, res, next) => {
-  Post.find()
+  Post.findAll()
     .then((posts) => {
       res.status(200).json(posts);
     })
@@ -55,6 +56,24 @@ exports.getOnePost = (req, res, next) => {
 };
 
 //mark post as read
+exports.getOnePost = (req, res, next) => {
+  Post.findOne({ id: req.params.id })
+    .then((post) => {
+      // Mark the post as read
+      post.read = true;
+      post
+        .save()
+        .then(() => {
+          res.status(200).json(post);
+        })
+        .catch((error) => {
+          res.status(500).json({ error });
+        });
+    })
+    .catch((error) => {
+      res.status(404).json({ error });
+    });
+};
 
 //delete post + remove in route
 exports.deletePost = (req, res, next) => {

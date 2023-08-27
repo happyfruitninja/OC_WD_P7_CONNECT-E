@@ -32,15 +32,6 @@ const routes = [
     component: ProfilePage,
   },
 
-  // {
-  //   path: "/",
-  //   name: "NotFound",
-  //   component: NotFound,
-  // },
-  //  {
-  //   path: "/:catchAll(.*)",
-  //   component: NotFound,
-  // },
 ];
 
 const router = createRouter({

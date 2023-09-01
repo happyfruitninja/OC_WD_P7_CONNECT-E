@@ -42,46 +42,25 @@ exports.getAllPosts = (req, res, next) => {
     });
 };
 
-//getting a single post
+//get one post
 exports.getOnePost = (req, res, next) => {
-  Post.findOne({
-    id: req.params.id,
-  })
+  Post.findOne({ where: { id: req.params.id } })
     .then((post) => {
       res.status(200).json(post);
-    })
-    .catch((error) => {
-      res.status(404).json({ error: error });
-    });
-};
-
-//mark post as read
-exports.getOnePost = (req, res, next) => {
-  Post.findOne({ id: req.params.id })
-    .then((post) => {
-      // Mark the post as read
-      post.read = true;
-      post
-        .save()
-        .then(() => {
-          res.status(200).json(post);
-        })
-        .catch((error) => {
-          res.status(500).json({ error });
-        });
     })
     .catch((error) => {
       res.status(404).json({ error });
     });
 };
+//marking post as read
 
-//delete post + remove in route
+//FIXME delete post + remove in route
 exports.deletePost = (req, res, next) => {
-  Post.findOne({ id: req.params.id }).then((post) => {
+  Post.findOne({ postId: req.params.id }).then((post) => {
     //   const filename = post.imageUrl.split("/images/")[1];
     //   fs.unlink("images/" + filename, () => {
     Post.deleteOne({
-      id: req.params.id,
+      postId: post.id,
     })
       .then(() => {
         res.status(200).json();

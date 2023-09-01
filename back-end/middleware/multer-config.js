@@ -3,6 +3,8 @@ const MIME_TYPES = {
   "image/jpg": "jpg",
   "image/jpeg": "jpg",
   "image/png": "png",
+  "audio/mp3": "mp3",
+  "video/mp4": "mp4",
 };
 
 //BUSINESS LOGIC - how multer figures out where to save and how
@@ -17,5 +19,5 @@ const storage = multer.diskStorage({
     },
   });
   
-  module.exports = multer({ storage: storage }).single("image");
+  module.exports = multer({ storage: storage }).single("image", "audio", "video");
   

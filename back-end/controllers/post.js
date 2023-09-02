@@ -7,7 +7,7 @@ exports.createPost = (req, res, next) => {
   let mediaUrl = null;
   if (req.file) {
     mediaUrl =
-      req.protocol + "://" + req.get("host") + "/images/" + req.file.filename;
+      req.protocol + "://" + req.get("host") + "/media/" + req.file.filename;
     requestedPost = JSON.parse(req.body.post);
   } else {
     requestedPost = req.body;
@@ -56,19 +56,21 @@ exports.getOnePost = (req, res, next) => {
 
 //FIXME delete post + remove in route
 exports.deletePost = (req, res, next) => {
-  Post.findOne({ postId: req.params.id }).then((post) => {
-    //   const filename = post.imageUrl.split("/images/")[1];
-    //   fs.unlink("images/" + filename, () => {
-    Post.deleteOne({
-      postId: post.id,
+  Post.findOne({ where: { postId: req.params.id } })
+    .then((post) => {
+      if (post) {
+        Post.deleteOne({ postId: post.id })
+          .then(() => {
+            res.status(200).json({ message: "Deleted" });
+          })
+          .catch((error) => {
+            res.status(400).json({ error: error.message || error });
+          });
+      } else {
+        res.status(404).json({ message: "Post not found" });
+      }
     })
-      .then(() => {
-        res.status(200).json();
-        message: "Deleted";
-      })
-      .catch((error) => {
-        res.status(400).json({ error: error.message || error });
-      });
-    // });
-  });
+    .catch((error) => {
+      res.status(500).json({ error: error.message || error });
+    });
 };

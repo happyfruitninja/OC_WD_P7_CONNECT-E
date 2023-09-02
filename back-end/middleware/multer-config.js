@@ -3,14 +3,14 @@ const MIME_TYPES = {
   "image/jpg": "jpg",
   "image/jpeg": "jpg",
   "image/png": "png",
-  "audio/mp3": "mp3",
+  "audio/mpeg": "mp3",
   "video/mp4": "mp4",
 };
 
 //BUSINESS LOGIC - how multer figures out where to save and how
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
-      callback(null, "images");
+      callback(null, "media");
     },
     filename: (req, file, callback) => {
       const name = file.originalname.split(" ").join("_");
@@ -19,5 +19,5 @@ const storage = multer.diskStorage({
     },
   });
   
-  module.exports = multer({ storage: storage }).single("image", "audio", "video");
+  module.exports = multer({ storage: storage }).single("media");
   

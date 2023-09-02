@@ -10,10 +10,10 @@
         width="100"
         height="100"
       />
-      <audio controls class="audio/mp3" src="audioUrl" v-if="audioUrl"></audio>
+      <audio controls class="audio" src="audioUrl" v-if="audioUrl"></audio>
       <video
         controls
-        class="video/mp4"
+        class="video"
         src="videoUrl"
         v-if="videoUrl"
         width="100"
@@ -26,7 +26,7 @@
         <input
           type="file"
           class="attach_file_button"
-          @change="attachFile($event)"
+          @change="attachFile"
           accept="image/*, audio/*, video/*"
         />
         <button @click="postMessage">Post</button>
@@ -40,10 +40,10 @@ export default {
   name: "PostPage",
   data() {
     const post = "";
-    const image = null;
+    const media = null;
     return {
       post,
-      image,
+      media,
     };
   },
   methods: {
@@ -55,11 +55,12 @@ export default {
       };
       let payload;
       let contentType;
-      if (this.image) {
+      if (this.media) {
         contentType = "multipart/form-data";
         payload = new FormData();
         payload.append("post", JSON.stringify(postInfo));
-        //  TODO append postInfo and image to payload
+        // TODO append postInfo and image to payload
+        payload.append("media", this.media);
       } else {
         contentType = "application/json";
         payload = JSON.stringify(postInfo);
@@ -92,32 +93,7 @@ export default {
         });
     },
     attachFile(event) {
-      this.image = event.target.files[0];
-
-      // let formData = new FormData();
-      // formData.append("icon", this.form.icon);
-
-      // fetch("http://localhost:3000/api/auth/posts", {
-      //   method: "POST",
-      //   headers: {
-      //     Authorization: "Bearer " + this.token,
-      //     Accept: "application/json",
-      //     "Content-Type": "multipart/form-data",
-      //   },
-      //   body: formData,
-      // }).then(
-      //   function (response) {
-      //     if (response.status != 201) {
-      //       this.fetchError = response.status;
-      //     } else {
-      //       response.json().then(
-      //         function (data) {
-      //           this.fetchResponse = data;
-      //         }.bind(this)
-      //       );
-      //     }
-      //   }.bind(this)
-      // );
+      this.media = event.target.files[0];
     },
     // markPostRead(postId) {},
   },
@@ -153,7 +129,6 @@ textarea {
 .buttons {
   display: flex;
   flex-direction: column;
-  width: 100px;
 }
 
 .buttons button {

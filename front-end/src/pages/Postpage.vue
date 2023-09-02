@@ -1,6 +1,19 @@
 <template>
   <div class="container_home">
+    <div class="post_box">
+      <textarea v-model="post" placeholder="My message.."></textarea>
+      <div class="buttons">
+        <input
+          type="file"
+          class="attach_file_button"
+          @change="attachFile"
+          accept="image/*, audio/*, video/*"
+        />
+        <button @click="postMessage">Post</button>
+      </div>
+    </div>
     <div class="display_box">
+      <!-- TODO use v-for directive to display all the posts-->
       {{ postInfo }}
       <img
         class="image"
@@ -20,18 +33,6 @@
         height="100"
       ></video>
     </div>
-    <div class="post_box">
-      <textarea v-model="post" placeholder="My message.."></textarea>
-      <div class="buttons">
-        <input
-          type="file"
-          class="attach_file_button"
-          @change="attachFile"
-          accept="image/*, audio/*, video/*"
-        />
-        <button @click="postMessage">Post</button>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -44,7 +45,12 @@ export default {
     return {
       post,
       media,
+      posts: [],
     };
+  },
+  mounted() {
+    //TODO get all posts from back-end using fetch api
+    //TODO set posts to data
   },
   methods: {
     postMessage() {
@@ -54,23 +60,18 @@ export default {
         userId,
       };
       let payload;
-      let contentType;
+      let headers = { Authorization: `Bearer this.${token}` };
       if (this.media) {
-        contentType = "multipart/form-data";
         payload = new FormData();
         payload.append("post", JSON.stringify(postInfo));
-        // TODO append postInfo and image to payload
         payload.append("media", this.media);
       } else {
-        contentType = "application/json";
+       headers['Content-Type']="application/json";
         payload = JSON.stringify(postInfo);
       }
       const options = {
         method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": contentType,
-        },
+        headers,
         body: payload,
       };
       console.log(JSON.stringify(options));
@@ -111,8 +112,8 @@ export default {
   margin: 10px auto;
   border: 1px solid darkgrey;
   width: 100%;
-  height: 60%;
   display: flex;
+  min-height: 200px;
 }
 
 .post_box {

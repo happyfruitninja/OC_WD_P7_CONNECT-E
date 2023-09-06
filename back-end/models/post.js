@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       post: DataTypes.STRING(512),
       mediaUrl: DataTypes.STRING,
       userId: DataTypes.INTEGER,
+      usersRead: DataTypes.ARRAY(DataTypes.INTEGER),
     },
     {
       sequelize,

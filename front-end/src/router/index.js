@@ -4,6 +4,7 @@ import SignupComp from "@/components/SignupComp.vue";
 import LoginComp from "@/components/LoginComp.vue";
 import ProfilePage from "@/pages/ProfilePage.vue";
 import PostPage from "@/pages/PostPage.vue";
+import SinglePost from "@/pages/SinglePost.vue";
 
 
 const routes = [
@@ -30,6 +31,11 @@ const routes = [
     path: "/profile",
     name: "ProfilePage",
     component: ProfilePage,
+  },
+  {
+    path: "/post/:id",
+    name: "SinglePost",
+    component: SinglePost,
   },
 
 ];

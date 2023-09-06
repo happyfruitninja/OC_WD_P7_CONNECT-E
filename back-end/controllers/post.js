@@ -33,7 +33,7 @@ exports.createPost = (req, res, next) => {
 
 //getting all posts
 exports.getAllPosts = (req, res, next) => {
-  Post.findAll()
+  Post.findAll({ order: [["createdAt", "DESC"]] })
     .then((posts) => {
       res.status(200).json(posts);
     })
@@ -54,23 +54,7 @@ exports.getOnePost = (req, res, next) => {
 };
 //marking post as read
 
-//FIXME delete post + remove in route
-exports.deletePost = (req, res, next) => {
-  Post.findOne({ where: { postId: req.params.id } })
-    .then((post) => {
-      if (post) {
-        Post.deleteOne({ postId: post.id })
-          .then(() => {
-            res.status(200).json({ message: "Deleted" });
-          })
-          .catch((error) => {
-            res.status(400).json({ error: error.message || error });
-          });
-      } else {
-        res.status(404).json({ message: "Post not found" });
-      }
-    })
-    .catch((error) => {
-      res.status(500).json({ error: error.message || error });
-    });
-};
+//TODO add method to mark a post
+//step 1. look for a post using req.params.id(see getOnePost)
+//step 2. check to see if post.usersRead array already has body.userId
+//step 3. if not add it and do sequelize update and sequelize save

@@ -33,11 +33,13 @@ export default {
   },
   methods: {
     postMessage() {
-      //TODO add bear token to options
+      //TODO add bear token to options      
       const options = {
         method: "GET",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json", 
+        Authorization: `Bearer ${token}`,
+      },
         },
       };
       fetch(`http://localhost:3000/api/posts/${this.$route.params.id}`, options)

@@ -14,8 +14,8 @@
     </div>
     <div class="display_box" v-for="post in posts" :key="post">
       <!-- TODO add Vue router link tag that links to the single page with the post.id-->
-      <div class="display_post" v-on="click">
-        {{ post.post }}
+       <div class="display_post" v-on="click" >
+        <router-link to="/posts/:id">{{ post.id }}</router-lin>        
         <img
           class="image"
           :src="post.mediaUrl"
@@ -51,7 +51,6 @@ export default {
     };
   },
   mounted() {
-    //TODO get all posts from back-end using fetch api
     const { token } = JSON.parse(localStorage.getItem("userInfo"));
     const options = {
       method: "GET",
@@ -73,7 +72,6 @@ export default {
         this.posts = result;
       });
 
-    //TODO set posts to data
     this.posts = [];
   },
   methods: {

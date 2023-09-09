@@ -16,6 +16,7 @@ exports.createPost = (req, res, next) => {
     post: requestedPost.post,
     mediaUrl,
     userId: requestedPost.userId,
+    usersRead: [],
   });
   post
     .save()
@@ -58,3 +59,32 @@ exports.getOnePost = (req, res, next) => {
 //step 1. look for a post using req.params.id(see getOnePost)
 //step 2. check to see if post.usersRead array already has body.userId
 //step 3. if not add it and do sequelize update and sequelize save
+exports.readPost = (req, res, next) => {
+  const id = req.params.id;
+  console.log(id);
+  const userId = req.body.userId;
+  Post.findOne({ id: id })
+    .then((post) => {
+      if (post?.usersRead.includes(userId)) {
+        res.status(200).json({ message: "user has already read post" });
+      } else if (!post.usersRead) {
+        res.status(404).json({ message: "post not found" });
+      } else {
+        post
+          .update({ usersRead: [...post.usersRead, userId] }) //"..."spreads syntax
+          .then((post) => {
+            post.save().then(() => {
+              res.status(200).json({ message: "user read the message" });
+            });
+          })
+          .catch((error) => {
+            res.status(500).json({
+              error: `Failed to update status ${error.message || error}`,
+            });
+          });
+      }
+    })
+    .catch((error) => {
+      res.status(400).json({ error: error.message || error });
+    });
+};

@@ -30,6 +30,5 @@ app.use(express.json());
 
 app.use("/media", express.static(path.join(__dirname, "media")));
 app.use("/api/posts", postRoutes);
-app.use("/api/posts/id", postRoutes);
 app.use("/api/auth", userRoutes);
 module.exports = app;

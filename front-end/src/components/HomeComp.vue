@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div id="chatGroup">
     <div class="chatDisplay">
       BOX
@@ -7,15 +7,43 @@
       <div class="post">
         <input type="text" />
         <div id="buttons">
-          <button v-on="click" id="attach">Attach</button>
+          <button @click= id="attach">Attach</button>
           <button v-on="click" id="post">Post</button>
         </div>
       </div>
     </div>
   </div>
 </template>
+ <script>
+export default {
+  name: "HomeComp",
+  methods: {
+    deleteUser() {
+      const { token, userId } = JSON.parse(localStorage.getItem("userInfo"));
+      const headers = {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      };
+      const options = {
+        method: "DELETE",
+        headers,
+      };
+      fetch(`http://localhost:3000/api/auth/${userId}`, options)
+        .then((data) => {
+          if (!data.ok) {
+            throw Error(data.status);
+          }
+          return data.json();
+        })
+        .then((result) => {
+          console.log(result);
+          localStorage.removeItem("userInfo");
+          this.$router.push("/signup");
+        });
+    },
+  },
+}; 
 
-<script>
 </script>
 <style>
 
@@ -42,4 +70,4 @@
   flex-direction: column;
   width: 100px;
 }
-</style>
+</style> -->

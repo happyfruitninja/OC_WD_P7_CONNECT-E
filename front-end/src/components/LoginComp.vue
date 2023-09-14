@@ -30,7 +30,7 @@ export default {
   data() {
     const userName = "userName";
     const password = "password";
-    return { loginPage: [userName, password] };
+    return { userName, password };
   },
   methods: {
     login() {

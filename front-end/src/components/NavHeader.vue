@@ -34,10 +34,14 @@ export default {
 
 <style>
 nav {
+  z-index:1;
+  position: fixed;
   background-color: navy;
   padding-top: 10px;
   display: flex;
   align-items: center;
+  height: 100px;
+  width: 100%;
   /* display:none; */
 }
 
@@ -74,7 +78,7 @@ li.link {
   margin-left: 10px;
 }
 
-@media only screen and (max-width: 459px) {
+@media only screen and (max-width: 768px) {
   nav {
     width: 100%;
     display: flex;

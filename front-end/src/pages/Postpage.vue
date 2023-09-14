@@ -1,38 +1,44 @@
 <template>
   <div class="container_home">
+    <div class="container_display_box">
+      <div class="display_box" v-for="post in posts" :key="post">
+        <!-- TODO add Vue router link tag that links to the single page with the post.id-->
+        <router-link :to="`/posts/${post.id}`"
+          ><div class="display_post">
+            <img
+              class="image"
+              :src="post.mediaUrl"
+              v-if="['png', 'jpg'].includes(getExtension(post.mediaUrl))"
+              alt="uploaded image"
+              width="100"
+              height="100"
+            />
+            <audio
+              controls
+              class="audio"
+              :src="post.mediaUrl"
+              v-if="['mp3'].includes(getExtension(post.mediaUrl))"
+            ></audio>
+            <video
+              controls
+              class="video"
+              :src="post.mediaUrl"
+              v-if="['mp4'].includes(getExtension(post.mediaUrl))"
+            ></video>
+          </div>
+        </router-link>
+      </div>
+    </div>
     <div class="post_box">
       <textarea v-model="post" placeholder="My message.."></textarea>
       <div class="buttons">
         <input
+          id="input"
           type="file"
-          class="attach_file_button"
           @change="attachFile"
           accept="image/*, audio/*, video/*"
         />
         <button @click="postMessage">Post</button>
-      </div>
-    </div>
-    <div class="display_box" v-for="post in posts" :key="post">
-      <!-- TODO add Vue router link tag that links to the single page with the post.id-->
-       <div class="display_post" v-on="click" >
-        <router-link to="/posts/:id">{{ post.id }}</router-lin>        
-        <img
-          class="image"
-          :src="post.mediaUrl"
-          v-if="['png', 'jpg'].includes(getExtension(post.mediaUrl))"
-          alt="uploaded image"
-          width="100"
-          height="100"
-        />
-        <audio controls class="audio"  :src="post.mediaUrl" v-if="['mp3'].includes(getExtension(post.mediaUrl))"></audio>
-        <!-- <video
-          controls
-          class="video"
-          src="videoUrl"
-          v-if="videoUrl"
-          width="100"
-          height="100"
-        ></video> -->
       </div>
     </div>
   </div>
@@ -125,79 +131,111 @@ export default {
     attachFile(event) {
       this.media = event.target.files[0];
     },
-    // selectPost() {
-    //   const selectedPost = "";
-    //   const options = {
-    //     method: "GET",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(selectedPost),
-    //   };
-    //   console.log("Post selected");
+    selectPost() {
+      const selectedPost = "";
+      const options = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(selectedPost),
+      };
+      console.log("Post selected");
 
-    //   //  user fetch API to send selectPost request
-    //   fetch("http://localhost:3000/api/auth/posts", options)
-    //     .then((data) => {
-    //       if (!data.ok) {
-    //         throw Error(data.status);
-    //       }
-    //       return data.json();
-    //     })
-    //     .then((result) => {
-    //       console.log(result);
-    //       location.assign(`./singlePost`);
-    //     });
-    // },
+      //  user fetch API to send selectPost request
+      fetch("http://localhost:3000/api/auth/posts", options)
+        .then((data) => {
+          if (!data.ok) {
+            throw Error(data.status);
+          }
+          return data.json();
+        })
+        .then((result) => {
+          console.log(result);
+          location.assign(`./singlePost`);
+        });
+    },
   },
 };
 </script>
 
 <style>
 .container_home {
-  width: 90%;
+  position: relative;
+  width: 100%;
   height: 100vh;
   margin: 0 auto;
-  padding: 100px auto;
-}
-.display_box {
-  margin: 10px auto;
-  border: 1px solid darkgrey;
-  width: 100%;
+  padding: 50px;
   display: flex;
-  min-height: 200px;
+  justify-content: center;
+}
+
+.container_display_box {
+  margin: 220px auto;
+  width: 100%;
+}
+
+.display_box {
+  margin: 0 auto 10px;
+  border: 1px solid darkgrey;
+  height: 200px;
+  min-width: 500px;
+  max-width: 800px;
 }
 
 .post_box {
+  padding: 20px 0 0;
+  margin: 0 auto;
+  top: 100px;
+  z-index: 2;
+  position: fixed;
+  height: 150px;
   width: 100%;
-  height: 15%;
+  min-width: 500px;
+  max-width: 800px;
   display: flex;
   flex-direction: row;
 }
 textarea {
-  width: 60%;
-  height: 100%;
+  width: 70%;
+  overflow: scroll;
+  border: 1px solid gray;
 }
 
 .buttons {
   display: flex;
   flex-direction: column;
+  width: 30%;
+  margin: 0 10px;
+  position: relative;
 }
 
 .buttons button {
-  height: 50%;
+  height: 48%;
+  font-size: 1em;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
-input {
-  height: 50%;
+#input {
+  height: 48%;
+  color: transparent;
+  font-size: 1em;
+  width: 100%;
+  color: hidden;
+  padding: 10%;
+  margin: 0 auto 10px;
+  background-color: rgb(235, 235, 235);
+  border: 1px solid gray;
+  position: absolute;
+  top: 0;
 }
 
 .img {
   height: 100px;
-  width: 100px;
 }
 
-/* .attach_file_button input{
-  height: 100%;
-} */
+@media only screen and (max-width: 768px) {
+}
 </style>

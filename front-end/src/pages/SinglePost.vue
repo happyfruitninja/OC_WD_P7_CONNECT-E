@@ -31,32 +31,12 @@ export default {
     const post = {};
     return { post };
   },
+  mounted(){
+    //TODO get the single post getting from vue router - this.$route.params.id + user token
+    //TODO call the backend to mark the post as read by the current user
+  },
   methods: {
-    postMessage() {
-      //TODO add bear token to options      
-      const options = {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json", 
-        Authorization: `Bearer ${token}`,
-      },
-        },
-      };
-      fetch(`http://localhost:3000/api/posts/${this.$route.params.id}`, options)
-        .then((data) => {
-          if (!data.ok) {
-            throw Error(data.status);
-          }
-          return data.json();
-        })
-        .then((result) => {
-          console.log(result);
-          this.post = result;
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    },
+    
   },
 };
 </script>

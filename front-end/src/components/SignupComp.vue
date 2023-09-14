@@ -106,6 +106,7 @@ export default {
 </script>
 
 <style>
+
 .block-left {
   background-image: url("../assets/office.jpg");
 }

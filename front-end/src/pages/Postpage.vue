@@ -2,7 +2,8 @@
   <div class="container_home">
     <div class="container_display_box">
       <div class="display_box" v-for="post in posts" :key="post">
-        <!-- TODO add Vue router link tag that links to the single page with the post.id-->
+        <!-- FIXME add post text -->
+        <!-- TODO indicate on the page if the user has read not the post from other users WCAG(accessibility) + run lighthouse on the browser -->
         <router-link :to="`/posts/${post.id}`"
           ><div class="display_post">
             <img
@@ -12,6 +13,7 @@
               alt="uploaded image"
               width="100"
               height="100"
+              alt=""
             />
             <audio
               controls

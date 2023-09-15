@@ -55,7 +55,7 @@ exports.getOnePost = (req, res, next) => {
 };
 //marking post as read
 
-//TODO add method to mark a post
+//add method to mark a post
 //step 1. look for a post using req.params.id(see getOnePost)
 //step 2. check to see if post.usersRead array already has body.userId
 //step 3. if not add it and do sequelize update and sequelize save
@@ -63,7 +63,8 @@ exports.readPost = (req, res, next) => {
   const id = req.params.id;
   console.log(id);
   const userId = req.body.userId;
-  Post.findOne({ id: id })
+  //  User.findOne({ where: { userName: req.body.userName } })
+  Post.findOne({ where: { id: id } })
     .then((post) => {
       if (post?.usersRead.includes(userId)) {
         res.status(200).json({ message: "user has already read post" });

@@ -10,22 +10,23 @@
               class="image"
               :src="post.mediaUrl"
               v-if="['png', 'jpg'].includes(getExtension(post.mediaUrl))"
-              alt="uploaded image"
+              :alt="imageDescriptoin"
               width="100"
               height="100"
-              alt=""
             />
             <audio
               controls
               class="audio"
               :src="post.mediaUrl"
               v-if="['mp3'].includes(getExtension(post.mediaUrl))"
+              :alt="audioDescription"
             ></audio>
             <video
               controls
               class="video"
               :src="post.mediaUrl"
               v-if="['mp4'].includes(getExtension(post.mediaUrl))"
+              :alt="videoDescription"
             ></video>
           </div>
         </router-link>

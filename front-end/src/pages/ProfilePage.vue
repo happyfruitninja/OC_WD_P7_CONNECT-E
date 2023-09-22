@@ -41,9 +41,11 @@ export default {
 </script>
 
 <style>
+
 .profile {
-  margin: auto;
+  margin: 0 auto ;
   text-align: center;
+  padding:200px;
 
 }
 .profile-pic {

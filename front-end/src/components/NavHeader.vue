@@ -36,13 +36,12 @@ export default {
 nav {
   z-index:1;
   position: fixed;
-  background-color: navy;
   padding-top: 10px;
   display: flex;
   align-items: center;
   height: 100px;
   width: 100%;
-  /* display:none; */
+  background-color: black;
 }
 
 ul {

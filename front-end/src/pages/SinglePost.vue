@@ -1,27 +1,30 @@
 <template>
   <div class="container_home">
     <div class="display_box">
-      <div class="display_post">
-        {{ post.post }}
-       
+      <div class="single_display_post">
+        <div class="text">{{ post.post }}</div>
+        <audio
+          controls
+          class="audio"
+          :src="post.mediaUrl"
+          v-if="['png', 'jpg'].includes(getExtension(post.mediaUrl))"
+        ></audio>
         <img
           class="image"
           :src="post.mediaUrl"
           v-if="['png', 'jpg'].includes(getExtension(post.mediaUrl))"
           alt="uploaded image"
-          width="100"
-          height="100"
+          width="500"
         />
         <!-- FIXME fix v-if and src tag attributes for media tags  -->
-        <!-- <audio controls class="audio" src="audioUrl" v-if="post.mediaUrl"></audio>
+        
         <video
           controls
           class="video"
           src="videoUrl"
-          v-if="videoUrl"
-          width="100"
-          height="100"
-        ></video> -->
+          v-if="['png', 'jpg'].includes(getExtension(post.mediaUrl))"
+          width="500"
+        ></video>
       </div>
     </div>
   </div>
@@ -93,5 +96,24 @@ export default {
 };
 </script>
 <style>
-/* FIXME styling  */
+.container_home {
+  overflow: scroll;
+  position: fixed;
+  top: 100px;
+}
+
+.single_display_box {
+  margin: 10px 0;
+  /* height: 200px; */
+  min-width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.text {
+  margin: 5px;
+  font-size: 1em;
+  height: 100%;
+  
+}
 </style>

@@ -2,46 +2,51 @@
   <div class="container_home">
     <div class="container_display_box">
       <div class="display_box" v-for="post in posts" :key="post">
+        <p :class="{ markedAsViewed: isViewed(post) }">Unread</p>
         <!-- FIXME add post text -->
         <!-- TODO indicate on the page if the user has read not the post from other users WCAG(accessibility) + run lighthouse on the browser -->
         <router-link :to="`/posts/${post.id}`"
-          ><div class="display_post">
-            <img
-              class="image"
-              :src="post.mediaUrl"
-              v-if="['png', 'jpg'].includes(getExtension(post.mediaUrl))"
-              :alt="imageDescriptoin"
-              width="100"
-              height="100"
-            />
+          ><div class="text">{{ post.post }}</div>
+          <div class="display_post">
             <audio
               controls
               class="audio"
               :src="post.mediaUrl"
               v-if="['mp3'].includes(getExtension(post.mediaUrl))"
               :alt="audioDescription"
+              width="500"
             ></audio>
+            <img
+              class="image"
+              :src="post.mediaUrl"
+              v-if="['png', 'jpg'].includes(getExtension(post.mediaUrl))"
+              :alt="imageDescriptoin"
+              width="500"
+            />
             <video
               controls
               class="video"
               :src="post.mediaUrl"
               v-if="['mp4'].includes(getExtension(post.mediaUrl))"
               :alt="videoDescription"
+              width="500"
             ></video>
           </div>
         </router-link>
       </div>
     </div>
-    <div class="post_box">
-      <textarea v-model="post" placeholder="My message.."></textarea>
-      <div class="buttons">
-        <input
-          id="input"
-          type="file"
-          @change="attachFile"
-          accept="image/*, audio/*, video/*"
-        />
-        <button @click="postMessage">Post</button>
+    <div class="container_post_box">
+      <div class="post_box">
+        <textarea v-model="post" placeholder="My message.."></textarea>
+        <div class="buttons">
+          <input
+            id="input"
+            type="file"
+            @change="attachFile"
+            accept="image/*, audio/*, video/*"
+          />
+          <button @click="postMessage">Post</button>
+        </div>
       </div>
     </div>
   </div>
@@ -85,7 +90,9 @@ export default {
   },
   methods: {
     postMessage() {
-      const { token, userId } = JSON.parse(localStorage.getItem("userInfo"));
+      const { token, userId } = JSON.parse(
+        localStorage.getItem("userInfo") || "{}"
+      );
       const postInfo = {
         post: this.post,
         userId,
@@ -158,6 +165,10 @@ export default {
           location.assign(`./singlePost`);
         });
     },
+    isViewed(post) {
+      const { userId } = JSON.parse(localStorage.getItem("userInfo"));
+      return post.usersRead.includes(userId);
+    },
   },
 };
 </script>
@@ -180,25 +191,31 @@ export default {
 
 .display_box {
   margin: 0 auto 10px;
-  border: 1px solid darkgrey;
-  height: 200px;
+  border: 1px solid red;
+  height: 500px;
   min-width: 500px;
-  max-width: 800px;
+  max-width: 1000px;
+}
+
+.container_post_box {
+  background-color: white;
+  width: 100%;
+  /* height: 100%; */
+  z-index: 2;
+  position: fixed;
+  top: 100px;
 }
 
 .post_box {
-  padding: 20px 0 0;
+  padding: 20px 0;
   margin: 0 auto;
   top: 100px;
-  z-index: 2;
-  position: fixed;
   height: 150px;
-  width: 100%;
   min-width: 500px;
   max-width: 800px;
   display: flex;
-  flex-direction: row;
 }
+
 textarea {
   width: 70%;
   overflow: scroll;
@@ -221,6 +238,10 @@ textarea {
   width: 100%;
 }
 
+.markedAsViewed {
+  display: none;
+}
+
 #input {
   height: 48%;
   color: transparent;
@@ -233,10 +254,6 @@ textarea {
   border: 1px solid gray;
   position: absolute;
   top: 0;
-}
-
-.img {
-  height: 100px;
 }
 
 @media only screen and (max-width: 768px) {

@@ -36,29 +36,30 @@ export default {
 nav {
   z-index:1;
   position: fixed;
-  padding-top: 10px;
+  padding: 20px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  height: 100px;
   width: 100%;
   background-color: black;
 }
 
 ul {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  /* align-items: center;
+  justify-content: space-between; */
   max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 30px;
+  /* margin: 0 auto;
+  padding: 0 30px; */
+  border: 1px dashed green;
 }
 ul li {
   list-style-type: none;
-  height: 70px;
+  /* height: 70px; */
 }
 .link {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
 }
 
 #logo {
@@ -68,6 +69,7 @@ ul li {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  /* margin: 0 20px;  */
 }
 
 a.link,

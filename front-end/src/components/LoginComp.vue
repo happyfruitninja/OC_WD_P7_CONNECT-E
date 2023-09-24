@@ -6,10 +6,16 @@
       <div class="form">
         <form @submit.prevent="login">
           <div>
-            <input v-model="userName" id="userName" type="text" required />
+            <input
+              type="text"
+              placeholder="User Name"
+              v-model="userName"
+              id="userName"
+              required
+            />
           </div>
           <div>
-            <input v-model="password" id="password" type="password" required />
+            <input v-model="password" id="password" type="password" placeholder ="Password" required />
           </div>
           <div class="submit">
             <input type="submit" value="Log In" required />
@@ -28,8 +34,8 @@
 export default {
   name: "LoginComp",
   data() {
-    const userName = "userName";
-    const password = "password";
+    const userName = "";
+    const password = "";
     return { userName, password };
   },
   methods: {
@@ -51,7 +57,7 @@ export default {
           return data.json();
         })
         .then((result) => {
-         // console.log("inside then");
+          // console.log("inside then");
           console.log(result);
           //add userInfo to localStorage
           localStorage.setItem("userInfo", JSON.stringify(result));

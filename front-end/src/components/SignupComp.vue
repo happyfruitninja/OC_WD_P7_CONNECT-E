@@ -3,10 +3,10 @@
     <div class="block-left"></div>
     <div class="block-right">
       <h1>connect-e</h1>
+      <h2>Sign up</h2>
       <div class="form">
         <form @submit.prevent="signup">
           <div>
-            <label for="userName">Username </label>
             <input
               v-model="userName"
               id="userName"
@@ -16,7 +16,6 @@
             />
           </div>
           <div>
-            <label for="email">Email </label>
             <input
               v-model="email"
               type="text"
@@ -26,7 +25,6 @@
             />
           </div>
           <div>
-            <label for="password">Password </label>
             <input
               v-model="password"
               type="password"
@@ -35,16 +33,7 @@
               required
             />
           </div>
-          <div>
-            <label for="confPassword"> Confirm Password </label>
-            <input
-              v-model="confPassword"
-              type="text"
-              name="confPassword"
-              placeholder="Confirm Password"
-              required
-            />
-          </div>
+
           <div class="submit">
             <input type="submit" value="Create Account" />
           </div>
@@ -106,7 +95,11 @@ export default {
 </script>
 
 <style>
-
+.container {
+  position: fixed;
+  top: 100px;
+  width: 100%;
+}
 .block-left {
   background-image: url("../assets/office.jpg");
 }

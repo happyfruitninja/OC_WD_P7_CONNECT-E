@@ -8,7 +8,7 @@ import NavHeader from "@/components/NavHeader.vue";
 export default {
   name: "LoginComp",
   components: { NavHeader },
-  
+
   // }
 };
 </script>
@@ -39,7 +39,9 @@ export default {
   margin-right: 20px;
 }
 .block-right {
+  margin: 100px;
   width: 40%;
+  height: 80%;
 }
 
 .form {
@@ -62,6 +64,7 @@ form div {
 
 input {
   text-align: center;
+  border: 0.5px solid gray;
 }
 
 .submit {
@@ -70,6 +73,18 @@ input {
 
 a {
   text-decoration: none;
+}
+
+video,
+img {
+  margin: 10px auto;
+  width: 100%;
+  max-width: 770px;
+}
+
+audio {
+  margin: 10px;
+  max-width: 500px;
 }
 
 @media only screen and (max-width: 700px) {

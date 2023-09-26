@@ -40,8 +40,9 @@ export default {
 nav {
   z-index: 1;
   position: fixed;
-  padding: 20px 30px;
+  padding: 20px 40px;
   width: 100%;
+  height: 100px;
   background-color: black;
 }
 
@@ -81,17 +82,14 @@ li.link {
   nav {
     width: 100%;
     display: flex;
-    padding: 10px 25px;
-    background-color: pink;
+    padding: 10px 35px;
   }
   .nav_container {
-    width:100%;
+    width: 100%;
   }
 
   ul {
     flex-direction: column;
   }
- 
-
 }
 </style>

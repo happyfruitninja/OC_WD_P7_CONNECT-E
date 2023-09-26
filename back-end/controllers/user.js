@@ -67,8 +67,8 @@ exports.login = (req, res, next) => {
 //user account delete function
 exports.deleteUser = (req, res, next) => {
   User.findOne({ where: { id: req.params.id } }).then((user) => {
-    user
-      destroy()
+    user;
+    destroy()
       .then(() => {
         res.status(200).json({
           message: "User deleted successfully",

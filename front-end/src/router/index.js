@@ -6,7 +6,6 @@ import ProfilePage from "@/pages/ProfilePage.vue";
 import PostPage from "@/pages/PostPage.vue";
 import SinglePost from "@/pages/SinglePost.vue";
 
-
 const routes = [
   {
     path: "/",
@@ -37,7 +36,6 @@ const routes = [
     name: "SinglePost",
     component: SinglePost,
   },
-
 ];
 
 const router = createRouter({

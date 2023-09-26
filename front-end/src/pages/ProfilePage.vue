@@ -41,12 +41,10 @@ export default {
 </script>
 
 <style>
-
 .profile {
-  margin: 0 auto ;
+  margin: 0 auto;
   text-align: center;
-  padding:200px;
-
+  padding: 200px;
 }
 .profile-pic {
   background-image: url("../assets/silhouette.png");
@@ -66,6 +64,5 @@ export default {
   margin: 10px 0 0;
   align-content: center;
   text-align: left;
- 
 }
 </style>

@@ -15,7 +15,13 @@
             />
           </div>
           <div>
-            <input v-model="password" id="password" type="password" placeholder ="Password" required />
+            <input
+              v-model="password"
+              id="password"
+              type="password"
+              placeholder="Password"
+              required
+            />
           </div>
           <div class="submit">
             <input type="submit" value="Log In" required />
@@ -71,6 +77,10 @@ export default {
 </script>
 
 <style>
+h1,
+h2 {
+  margin: 10px 0 0;
+}
 .block-left {
   background-image: url("../assets/office.jpg");
 }

@@ -5,8 +5,8 @@
         <p :class="{ markedAsViewed: isViewed(post) }">Unread</p>
         <!-- FIXME add post text -->
         <!-- TODO indicate on the page if the user has read not the post from other users WCAG(accessibility) + run lighthouse on the browser -->
-        <router-link :to="`/posts/${post.id}`"
-          ><div class="text">{{ post.post }}</div>
+        <router-link :to="`/posts/${post.id}`">
+          <div class="text_post">{{ post.post }}</div>
           <div class="display_post">
             <audio
               controls
@@ -21,7 +21,6 @@
               :src="post.mediaUrl"
               v-if="['png', 'jpg'].includes(getExtension(post.mediaUrl))"
               :alt="imageDescriptoin"
-              width="500"
             />
             <video
               controls
@@ -45,7 +44,7 @@
             @change="attachFile"
             accept="image/*, audio/*, video/*"
           />
-          <button @click="postMessage">Post</button>
+          <button id="button" @click="postMessage">Post</button>
         </div>
       </div>
     </div>
@@ -175,62 +174,68 @@ export default {
 
 <style>
 .container_home {
-  position: relative;
+  overflow: scroll;
+  position: fixed;
+  top: 100px;
   width: 100%;
   height: 100vh;
   margin: 0 auto;
-  padding: 50px;
-  display: flex;
-  justify-content: center;
 }
 
 .container_display_box {
   margin: 220px auto;
   width: 100%;
+  padding: 0 20px 0;
 }
 
 .display_box {
-  margin: 0 auto 10px;
-  border: 1px solid red;
-  height: 500px;
-  min-width: 500px;
-  max-width: 1000px;
+  padding: 10px;
+  height: 100%;
+  margin: 5px auto;
+  max-height: 500px;
+  min-width: 400px;
+  max-width: 800px;
+  border: 1px solid gray;
 }
-
 .container_post_box {
   background-color: white;
   width: 100%;
-  /* height: 100%; */
-  z-index: 2;
+  min-width: 400px;
   position: fixed;
   top: 100px;
+  padding: 20px 20px 0;
 }
-
 .post_box {
-  padding: 20px 0;
-  margin: 0 auto;
-  top: 100px;
+  z-index: 2;
+  margin: 10px auto;
   height: 150px;
-  min-width: 500px;
+  min-width: 400px;
   max-width: 800px;
   display: flex;
 }
 
 textarea {
   width: 70%;
+  height: 100%;
   overflow: scroll;
   border: 1px solid gray;
+  padding: 10px;
+}
+.text_post {
+  margin: 5px 0;
+  color: black;
 }
 
 .buttons {
   display: flex;
   flex-direction: column;
   width: 30%;
-  margin: 0 10px;
+  margin: 0 0 0 10px;
   position: relative;
+  height: 100%;
 }
 
-.buttons button {
+#button {
   height: 48%;
   font-size: 1em;
   position: absolute;
@@ -248,7 +253,7 @@ textarea {
   font-size: 1em;
   width: 100%;
   color: hidden;
-  padding: 10%;
+  padding: 10% 27%;
   margin: 0 auto 10px;
   background-color: rgb(235, 235, 235);
   border: 1px solid gray;
@@ -257,5 +262,36 @@ textarea {
 }
 
 @media only screen and (max-width: 768px) {
+  .post_box {
+    flex-direction: column;
+    width: 100%;
+    height: 200px;
+  }
+
+  textarea {
+    height: 70%;
+    width: 100%;
+  }
+  .buttons {
+    margin: 5px 0;
+    flex-direction: row;
+    width: 100%;
+    height: 30%;
+    position: relative;
+    display: flex;
+  }
+
+  #button {
+    right: 0;
+    width: 50%;
+    height: 100%;
+  }
+
+  #input {
+    padding: 2.5% 17%;
+    width: 50%;
+    height: 100%;
+    left: 0;
+  }
 }
 </style>

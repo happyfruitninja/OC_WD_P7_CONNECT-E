@@ -9,15 +9,14 @@ const MIME_TYPES = {
 
 //BUSINESS LOGIC - how multer figures out where to save and how
 const storage = multer.diskStorage({
-    destination: (req, file, callback) => {
-      callback(null, "media");
-    },
-    filename: (req, file, callback) => {
-      const name = file.originalname.split(" ").join("_");
-      const extension = MIME_TYPES[file.mimetype];
-      callback(null, name + Date.now() + "." + extension);
-    },
-  });
-  
-  module.exports = multer({ storage: storage }).single("media");
-  
+  destination: (req, file, callback) => {
+    callback(null, "media");
+  },
+  filename: (req, file, callback) => {
+    const name = file.originalname.split(" ").join("_");
+    const extension = MIME_TYPES[file.mimetype];
+    callback(null, name + Date.now() + "." + extension);
+  },
+});
+
+module.exports = multer({ storage: storage }).single("media");

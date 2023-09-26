@@ -1,17 +1,21 @@
 <template>
   <nav>
-    <div id="logo"></div>
-    <ul class="links">
-      <li v-if="isLoggedIn">
-        <router-link :to="{ name: 'ProfilePage' }" class="link"
-          >Profile</router-link
-        >
-      </li>
-      <li>
-        <router-link :to="{ name: 'PostPage' }" class="link">Home</router-link>
-      </li>
-      <li @click="signOut" class="link">Sign out</li>
-    </ul>
+    <div class="nav_container">
+      <div id="logo"></div>
+      <ul class="links">
+        <li v-if="isLoggedIn">
+          <router-link :to="{ name: 'ProfilePage' }" class="link"
+            >Profile</router-link
+          >
+        </li>
+        <li>
+          <router-link :to="{ name: 'PostPage' }" class="link"
+            >Home</router-link
+          >
+        </li>
+        <li @click="signOut" class="link">Sign out</li>
+      </ul>
+    </div>
   </nav>
 </template>
 
@@ -34,32 +38,27 @@ export default {
 
 <style>
 nav {
-  z-index:1;
+  z-index: 1;
   position: fixed;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 20px 30px;
   width: 100%;
   background-color: black;
 }
 
+.nav_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+}
+
 ul {
   display: flex;
-  /* align-items: center;
-  justify-content: space-between; */
   max-width: 1000px;
-  /* margin: 0 auto;
-  padding: 0 30px; */
-  border: 1px dashed green;
 }
+
 ul li {
   list-style-type: none;
-  /* height: 70px; */
-}
-.link {
-  display: flex;
-  /* align-items: center; */
 }
 
 #logo {
@@ -69,7 +68,6 @@ ul li {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  /* margin: 0 20px;  */
 }
 
 a.link,
@@ -83,19 +81,17 @@ li.link {
   nav {
     width: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0;
+    padding: 10px 25px;
+    background-color: pink;
   }
+  .nav_container {
+    width:100%;
+  }
+
   ul {
     flex-direction: column;
-    padding: 10px 0;
   }
-  ul li {
-    height: 50px;
-  }
-  .links {
-    height: 30px;
-  }
+ 
+
 }
 </style>

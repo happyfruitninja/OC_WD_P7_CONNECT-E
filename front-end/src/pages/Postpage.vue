@@ -183,7 +183,7 @@ export default {
 }
 
 .container_display_box {
-  margin: 220px auto;
+  margin: 100px auto;
   width: 100%;
   padding: 0 20px 0;
 }
@@ -191,24 +191,26 @@ export default {
 .display_box {
   padding: 10px;
   height: 100%;
-  margin: 5px auto;
+  margin: 0 auto;
   max-height: 500px;
   min-width: 400px;
   max-width: 800px;
   border: 1px solid gray;
+  overflow: auto;
 }
 .container_post_box {
   background-color: white;
   width: 100%;
   min-width: 400px;
   position: fixed;
-  top: 100px;
-  padding: 20px 20px 0;
+  top: 70px;
+  padding: 0 20px;
 }
+
 .post_box {
   z-index: 2;
   margin: 10px auto;
-  height: 150px;
+  height: 100px;
   min-width: 400px;
   max-width: 800px;
   display: flex;
@@ -252,8 +254,7 @@ textarea {
   color: transparent;
   font-size: 1em;
   width: 100%;
-  color: hidden;
-  padding: 10% 27%;
+  padding: 5.5% 28%;
   margin: 0 auto 10px;
   background-color: rgb(235, 235, 235);
   border: 1px solid gray;
@@ -262,10 +263,13 @@ textarea {
 }
 
 @media only screen and (max-width: 768px) {
+  .container_display_box {
+    margin: 100px auto;
+  }
   .post_box {
     flex-direction: column;
     width: 100%;
-    height: 200px;
+    height: 100px;
   }
 
   textarea {
@@ -279,16 +283,18 @@ textarea {
     height: 30%;
     position: relative;
     display: flex;
+    align-items: center;
   }
 
   #button {
+    top: 0;
     right: 0;
     width: 50%;
     height: 100%;
   }
 
   #input {
-    padding: 2.5% 17%;
+    padding: 0.4% 17%;
     width: 50%;
     height: 100%;
     left: 0;

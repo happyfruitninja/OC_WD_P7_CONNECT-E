@@ -15,7 +15,7 @@ export default {
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  font-size: 1em;
+  font-size: 0.9em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -80,6 +80,7 @@ img {
   margin: 10px auto;
   width: 100%;
   max-width: 770px;
+  height:100%;
 }
 
 audio {
@@ -89,7 +90,7 @@ audio {
 
 @media only screen and (max-width: 700px) {
   #app {
-    font-size: 0.9em;
+    font-size: 0.8em;
   }
   .container {
     margin: 0;

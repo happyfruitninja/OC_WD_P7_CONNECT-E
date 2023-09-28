@@ -2,18 +2,19 @@
   <nav>
     <div class="nav_container">
       <div id="logo"></div>
-      <ul class="links">
+      <ul class="links" >
         <li v-if="isLoggedIn">
           <router-link :to="{ name: 'ProfilePage' }" class="link"
             >Profile</router-link
           >
         </li>
-        <li>
+        <li v-if="isLoggedIn">
           <router-link :to="{ name: 'PostPage' }" class="link"
             >Home</router-link
           >
         </li>
-        <li @click="signOut" class="link">Sign out</li>
+        <li v-if="isLoggedIn" @click="signOut" class="link">Sign out</li>
+        <li v-if="!isLoggedIn" @click="login" class="link">Login</li>
       </ul>
     </div>
   </nav>
@@ -32,6 +33,9 @@ export default {
       localStorage.removeItem("userInfo");
       this.$router.push("/login");
     },
+    login () {
+      this.$router.push("/login");
+    },
   },
 };
 </script>
@@ -40,9 +44,9 @@ export default {
 nav {
   z-index: 1;
   position: fixed;
-  padding: 20px 40px;
+  padding: 0 20px;
   width: 100%;
-  height: 100px;
+  height: 70px;
   background-color: black;
 }
 

@@ -6,7 +6,7 @@
         controls
         class="audio"
         :src="post.mediaUrl"
-        v-if="['png', 'jpg'].includes(getExtension(post.mediaUrl))"
+        v-if="['mp3'].includes(getExtension(post.mediaUrl))"
       ></audio>
       <img
         class="image"
@@ -20,8 +20,8 @@
       <video
         controls
         class="video"
-        src="videoUrl"
-        v-if="['png', 'jpg'].includes(getExtension(post.mediaUrl))"
+        :src="post.mediaUrl"
+        v-if="['mp4'].includes(getExtension(post.mediaUrl))"
         width="500"
       ></video>
     </div>
@@ -95,7 +95,7 @@ export default {
 </script>
 <style>
 .single_display_post {
-  margin: 30px auto;
+  margin: 0 auto;
   min-width: 400px;
   max-width: 800px;
   width: 100%;

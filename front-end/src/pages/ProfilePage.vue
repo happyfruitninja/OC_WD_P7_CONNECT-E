@@ -44,7 +44,7 @@ export default {
 .profile {
   margin: 0 auto;
   text-align: center;
-  padding: 200px;
+  padding: 50px;
 }
 .profile-pic {
   background-image: url("../assets/silhouette.png");
@@ -59,7 +59,7 @@ export default {
   display: flex;
   flex-direction: column;
   width: 300px;
-  height: 150px;
+  height: 50px;
   width: 100%;
   margin: 10px 0 0;
   align-content: center;
